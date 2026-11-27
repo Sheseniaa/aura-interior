@@ -159,7 +159,7 @@ function ContactoPage() {
               </Field>
             </div>
             <Field label="Cuéntame sobre tu proyecto *" id="mensaje">
-              <textarea id="mensaje" rows={5} required minLength={3} maxLength={5000} value={form.mensaje} onChange={(e) => setForm({ ...form, mensaje: e.target.value })} className={\`\${inputClass} resize-y\`} placeholder="¿Qué espacio quieres diseñar? ¿Qué necesitas resolver? ¿Tienes medidas, planos o referencias?" />
+              <textarea id="mensaje" rows={5} required minLength={3} maxLength={5000} value={form.mensaje} onChange={(e) => setForm({ ...form, mensaje: e.target.value })} className={`${inputClass} resize-y`} placeholder="¿Qué espacio quieres diseñar? ¿Qué necesitas resolver? ¿Tienes medidas, planos o referencias?" />
             </Field>
             <div className="sr-only" aria-hidden="true">
               <label htmlFor="website">Deja este campo vacío</label>
@@ -189,7 +189,7 @@ function ContactoPage() {
               {enviando ? "Enviando solicitud…" : "Enviar solicitud"} <Send size={15} />
             </button>
             {estadoEnvio !== "idle" && (
-              <p role="status" aria-live="polite" className={\`rounded-xl p-3 text-sm \${estadoEnvio === "success" ? "bg-nude text-oliva" : "bg-destructive/10 text-destructive"}\`}>
+              <p role="status" aria-live="polite" className={`rounded-xl p-3 text-sm ${estadoEnvio === "success" ? "bg-nude text-oliva" : "bg-destructive/10 text-destructive"}`}>
                 {mensajeEstado}
               </p>
             )}
