@@ -19,7 +19,7 @@ function PrivacyPage() {
       <p>Esta política explica cómo Aura Interior trata los datos personales relacionados con consultas, cotizaciones y servicios de arquitectura, diseño de interiores, decoración, visualización 3D y productos artesanales. Se aplica conforme a la Ley 1581 de 2012, sus normas reglamentarias y demás disposiciones colombianas aplicables.</p>
       <section>
         <h2>1. Responsable del tratamiento</h2>
-        <p>El responsable que opera comercialmente como Aura Interior es <strong>[COMPLETAR NOMBRE LEGAL]</strong>, identificado con NIT <strong>[COMPLETAR NIT]</strong>, con dirección en <strong>[COMPLETAR DIRECCIÓN]</strong>. Canal electrónico de atención: <a href={\`mailto:\${CONTACT_EMAIL}\`}>{CONTACT_EMAIL}</a>. Teléfono: <strong>[COMPLETAR TELÉFONO]</strong>. El proyecto identifica su actividad en Envigado, Medellín, Colombia; esta referencia no reemplaza la dirección legal pendiente.</p>
+        <p>El responsable que opera comercialmente como Aura Interior es <strong>[COMPLETAR NOMBRE LEGAL]</strong>, identificado con NIT <strong>[COMPLETAR NIT]</strong>, con dirección en <strong>[COMPLETAR DIRECCIÓN]</strong>. Canal electrónico de atención: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Teléfono: <strong>[COMPLETAR TELÉFONO]</strong>. El proyecto identifica su actividad en Envigado, Medellín, Colombia; esta referencia no reemplaza la dirección legal pendiente.</p>
       </section>
       <section>
         <h2>2. Datos que podemos recopilar</h2>
@@ -52,7 +52,7 @@ function PrivacyPage() {
       </section>
       <section>
         <h2>6. Consultas, reclamos y solicitudes</h2>
-        <p>Envía tu solicitud a <a href={\`mailto:\${CONTACT_EMAIL}\`}>{CONTACT_EMAIL}</a> con el asunto “Datos personales”, indicando tu nombre, medio para responder, derecho que deseas ejercer y la información necesaria para localizar los datos. Para protegerlos, podremos solicitar verificación razonable de identidad.</p>
+        <p>Envía tu solicitud a <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> con el asunto “Datos personales”, indicando tu nombre, medio para responder, derecho que deseas ejercer y la información necesaria para localizar los datos. Para protegerlos, podremos solicitar verificación razonable de identidad.</p>
         <p>Las consultas se responderán dentro del plazo legal de diez (10) días hábiles desde su recepción; si no es posible, se informará el motivo y la nueva fecha dentro de ese plazo, que no podrá superar cinco (5) días hábiles adicionales. Los reclamos completos se atenderán en quince (15) días hábiles; cuando proceda una prórroga, se informará antes del vencimiento y no superará ocho (8) días hábiles adicionales. Si falta información, se solicitará completar el reclamo conforme al procedimiento legal.</p>
       </section>
       <section>
