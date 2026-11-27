@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Instagram, Mail, MapPin, Send, ArrowUpRight } from "lucide-react";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { LeafDivider } from "@/components/Logo";
@@ -26,6 +26,8 @@ function ContactoPage() {
     ubicacion: "Otra ciudad de Colombia",
     presupuesto: "Por definir",
     mensaje: "",
+    autorizacion: false,
+    website: "",
   });
   const [enviando, setEnviando] = useState(false);
   const [estadoEnvio, setEstadoEnvio] = useState<"idle" | "success" | "error">("idle");
@@ -53,13 +55,15 @@ function ContactoPage() {
         location: form.ubicacion,
         budget: form.presupuesto,
         message: form.mensaje,
+        consent: form.autorizacion,
+        honeypot: form.website,
       });
       setEstadoEnvio("success");
       setMensajeEstado("Tu solicitud fue enviada. Aura Interior se pondrá en contacto contigo al correo que proporcionaste.");
-      setForm({ nombre: "", email: "", servicio: "Diseño de interiores", ubicacion: "Otra ciudad de Colombia", presupuesto: "Por definir", mensaje: "" });
+      setForm({ nombre: "", email: "", servicio: "Diseño de interiores", ubicacion: "Otra ciudad de Colombia", presupuesto: "Por definir", mensaje: "", autorizacion: false, website: "" });
     } catch (error) {
       setEstadoEnvio("error");
-      setMensajeEstado(error instanceof Error ? error.message : "No pudimos enviar tu solicitud. Escríbenos directamente por WhatsApp o correo.");
+      setMensajeEstado(error instanceof Error ? error.message : "No pudimos confirmar el envío. Revisa tu correo antes de intentarlo otra vez.");
     } finally {
       setEnviando(false);
     }
@@ -112,10 +116,10 @@ function ContactoPage() {
           <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Nombre *" id="nombre">
-                <input id="nombre" required autoComplete="name" value={form.nombre} onChange={(e) => setForm({ ...form, nombre: e.target.value })} className={inputClass} placeholder="Tu nombre" />
+                <input id="nombre" required minLength={2} maxLength={120} autoComplete="name" value={form.nombre} onChange={(e) => setForm({ ...form, nombre: e.target.value })} className={inputClass} placeholder="Tu nombre" />
               </Field>
               <Field label="Correo electrónico *" id="email">
-                <input id="email" type="email" required autoComplete="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputClass} placeholder="tu@correo.com" />
+                <input id="email" type="email" required maxLength={254} autoComplete="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputClass} placeholder="tu@correo.com" />
               </Field>
             </div>
             <Field label="¿Qué servicio necesitas? *" id="servicio">
@@ -155,16 +159,37 @@ function ContactoPage() {
               </Field>
             </div>
             <Field label="Cuéntame sobre tu proyecto *" id="mensaje">
-              <textarea id="mensaje" rows={5} required value={form.mensaje} onChange={(e) => setForm({ ...form, mensaje: e.target.value })} className={`${inputClass} resize-y`} placeholder="¿Qué espacio quieres diseñar? ¿Qué necesitas resolver? ¿Tienes medidas, planos o referencias?" />
+              <textarea id="mensaje" rows={5} required minLength={3} maxLength={5000} value={form.mensaje} onChange={(e) => setForm({ ...form, mensaje: e.target.value })} className={\`\${inputClass} resize-y\`} placeholder="¿Qué espacio quieres diseñar? ¿Qué necesitas resolver? ¿Tienes medidas, planos o referencias?" />
             </Field>
+            <div className="sr-only" aria-hidden="true">
+              <label htmlFor="website">Deja este campo vacío</label>
+              <input id="website" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })} />
+            </div>
+            <div className="flex items-start gap-2 text-xs leading-relaxed text-muted-foreground">
+              <input
+                id="autorizacion-datos"
+                type="checkbox"
+                required
+                checked={form.autorizacion}
+                onChange={(e) => setForm({ ...form, autorizacion: e.target.checked })}
+                className="mt-0.5 h-4 w-4 shrink-0 accent-primary"
+              />
+              <label htmlFor="autorizacion-datos">
+                He leído y autorizo el tratamiento de mis datos personales de acuerdo con la{" "}
+                <Link to="/politica-de-privacidad" className="underline underline-offset-2 hover:text-terracota">
+                  Política de Tratamiento de Datos Personales
+                </Link>.
+              </label>
+            </div>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              Usaremos tus datos para gestionar esta solicitud. Consulta la{" "}
+              <Link to="/politica-de-privacidad" className="underline underline-offset-2 hover:text-terracota">política completa</Link>.
+            </p>
             <button type="submit" disabled={enviando} className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-arcilla disabled:cursor-not-allowed disabled:opacity-60">
               {enviando ? "Enviando solicitud…" : "Enviar solicitud"} <Send size={15} />
             </button>
-            <p className="text-xs leading-relaxed text-muted-foreground">
-              Tus datos se utilizarán únicamente para responder a esta solicitud.
-            </p>
             {estadoEnvio !== "idle" && (
-              <p role="status" aria-live="polite" className={`rounded-xl p-3 text-sm ${estadoEnvio === "success" ? "bg-nude text-oliva" : "bg-destructive/10 text-destructive"}`}>
+              <p role="status" aria-live="polite" className={\`rounded-xl p-3 text-sm \${estadoEnvio === "success" ? "bg-nude text-oliva" : "bg-destructive/10 text-destructive"}\`}>
                 {mensajeEstado}
               </p>
             )}
