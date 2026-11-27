@@ -7,7 +7,7 @@ export const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "31336481
 
 export function buildWhatsAppUrl(message: string) {
   if (!WHATSAPP_NUMBER) return undefined;
-  return \`https://wa.me/\${WHATSAPP_NUMBER}?text=\${encodeURIComponent(message)}\`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
 const LIMITS = {
@@ -57,7 +57,7 @@ export async function submitContactRequest(input: {
   const timeout = window.setTimeout(() => controller.abort(), 45000);
   let response: Response;
   try {
-    response = await fetch(\`https://formsubmit.co/ajax/\${encodeURIComponent(CONTACT_EMAIL)}\`, {
+    response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(CONTACT_EMAIL)}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export async function submitContactRequest(input: {
         budget,
         message,
         privacy_authorization: "Sí, autorizo el tratamiento según la Política de Tratamiento de Datos Personales.",
-        _subject: \`Nueva solicitud Aura Interior — \${service}\`,
+        _subject: `Nueva solicitud Aura Interior — ${service}`,
         _template: "table",
         _captcha: "false",
         _honey: "",
