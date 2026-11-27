@@ -61,8 +61,13 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-border py-5 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Aura Interior — Diseño que conecta esencia y bienestar
+      <div className="border-t border-border px-6 py-5 text-center text-xs text-muted-foreground">
+        <p>© {new Date().getFullYear()} Aura Interior — Diseño que conecta esencia y bienestar</p>
+        <nav aria-label="Información legal" className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2">
+          <Link to="/politica-de-privacidad" className="hover:text-terracota">Política de Privacidad</Link>
+          <Link to="/terminos-y-condiciones" className="hover:text-terracota">Términos y Condiciones</Link>
+          <Link to="/politica-de-cookies" className="hover:text-terracota">Política de Cookies</Link>
+        </nav>
       </div>
     </footer>
   );
