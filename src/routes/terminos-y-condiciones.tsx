@@ -16,7 +16,7 @@ export const Route = createFileRoute("/terminos-y-condiciones")({
 function TermsPage() {
   return (
     <LegalPage title="Términos y Condiciones" updated="27 de noviembre de 2026">
-      <p>Estos términos describen las condiciones generales para navegar el sitio y solicitar servicios o productos ofrecidos bajo el nombre Aura Interior. El proveedor que opera comercialmente la marca debe completar su identificación antes de publicar esta versión: <strong>[COMPLETAR NOMBRE LEGAL]</strong>, NIT <strong>[COMPLETAR NIT]</strong>, dirección <strong>[COMPLETAR DIRECCIÓN]</strong>, teléfono <strong>[COMPLETAR TELÉFONO]</strong>. Contacto: <a href={\`mailto:\${CONTACT_EMAIL}\`}>{CONTACT_EMAIL}</a>.</p>
+      <p>Estos términos describen las condiciones generales para navegar el sitio y solicitar servicios o productos ofrecidos bajo el nombre Aura Interior. El proveedor que opera comercialmente la marca debe completar su identificación antes de publicar esta versión: <strong>[COMPLETAR NOMBRE LEGAL]</strong>, NIT <strong>[COMPLETAR NIT]</strong>, dirección <strong>[COMPLETAR DIRECCIÓN]</strong>, teléfono <strong>[COMPLETAR TELÉFONO]</strong>. Contacto: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
       <section>
         <h2>1. Oferta general</h2>
         <p>El sitio presenta información sobre arquitectura, diseño de interiores, decoración, asesorías, planos, modelado y visualización 3D, además de piezas artesanales y decorativas. La información permite conocer los servicios y contactar a Aura Interior; una consulta enviada no constituye por sí sola la aceptación de una cotización ni la celebración de un contrato.</p>
@@ -37,7 +37,7 @@ function TermsPage() {
       </section>
       <section>
         <h2>5. Cancelaciones y retracto</h2>
-        <p>Las solicitudes de cambio, cancelación o devolución deben enviarse a <a href={\`mailto:\${CONTACT_EMAIL}\`}>{CONTACT_EMAIL}</a>. Las consecuencias económicas o de programación dependerán de lo acordado en la cotización o contrato y de los derechos imperativos reconocidos por la legislación colombiana. El derecho de retracto y sus excepciones se aplican únicamente en los casos y términos previstos por la ley; las excepciones legales para bienes confeccionados conforme a especificaciones del consumidor o claramente personalizados no se amplían por estos términos.</p>
+        <p>Las solicitudes de cambio, cancelación o devolución deben enviarse a <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Las consecuencias económicas o de programación dependerán de lo acordado en la cotización o contrato y de los derechos imperativos reconocidos por la legislación colombiana. El derecho de retracto y sus excepciones se aplican únicamente en los casos y términos previstos por la ley; las excepciones legales para bienes confeccionados conforme a especificaciones del consumidor o claramente personalizados no se amplían por estos términos.</p>
       </section>
       <section>
         <h2>6. Propiedad intelectual</h2>
@@ -50,7 +50,7 @@ function TermsPage() {
       </section>
       <section>
         <h2>8. Contacto, ley aplicable y autoridad</h2>
-        <p>Para consultas, reclamaciones o solicitudes relacionadas con estos términos, escribe a <a href={\`mailto:\${CONTACT_EMAIL}\`}>{CONTACT_EMAIL}</a>. Se aplica la legislación colombiana. Si una operación queda comprendida en las reglas de comercio electrónico, consulta también la información y canales de la <a href="https://www.sic.gov.co/" target="_blank" rel="noopener noreferrer">Superintendencia de Industria y Comercio (SIC)</a>.</p>
+        <p>Para consultas, reclamaciones o solicitudes relacionadas con estos términos, escribe a <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Se aplica la legislación colombiana. Si una operación queda comprendida en las reglas de comercio electrónico, consulta también la información y canales de la <a href="https://www.sic.gov.co/" target="_blank" rel="noopener noreferrer">Superintendencia de Industria y Comercio (SIC)</a>.</p>
       </section>
     </LegalPage>
   );
